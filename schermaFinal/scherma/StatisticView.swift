@@ -8,6 +8,7 @@ struct StatisticView: View {
     @Environment(\.presentationMode) var presentationMode2
     
     var body: some View {
+        let fightpage = FightPage()
         NavigationView{
             VStack(alignment: .center) {
                 Text(" \(resultB)")
@@ -37,6 +38,7 @@ struct StatisticView: View {
                 
                 Button(action: {
                     self.presentationMode2.wrappedValue.dismiss()
+                   
                 }) {
                     Text("EXIT")
                         .font(.custom("PoetsenOne-Regular", size: 30))
@@ -48,6 +50,7 @@ struct StatisticView: View {
                     
                     
                 }
+                
                 
             }  .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color(hex: 0xd4dcff))
@@ -62,6 +65,7 @@ struct StatisticView: View {
                         .foregroundStyle(Color(hex: 0x080851))
                     
                 }
+                
                 
             }
 //            .padding()

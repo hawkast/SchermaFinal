@@ -91,17 +91,13 @@ struct FightPage: View {
                             .focused($isTextFieldFocused) // Gestisce il focus
                         
                         Button("Start Game") {
-                            noEmpty = true
-                            connectToGame()
-                            disableText = false
-                            gameInProgress = true
-                            isTextFieldFocused = false // Rimuove il focus dalle text field
+                        startGame() // Rimuove il focus dalle text field
                         }
                         .frame(width: 100.0, height: 50.0)
                         .disabled(!isEnabled)
                         .foregroundColor(Color(hex: 0x080851))
                         .background(RoundedRectangle(cornerRadius: 8).fill(Color.toggleOff.opacity(0.2)))
-                        .disabled(!disableText)
+                        //.disabled(!disableText)
                         .toolbar {
                             ToolbarItem(placement: .principal) {
                                 Text("FightPage")
@@ -131,6 +127,7 @@ struct FightPage: View {
                     .sheet(isPresented: $statisticViewPresented) {
                         StatisticView(suffered: $suffered, made: $made, resultB: $resultB)
                     }
+                  
                     
                     if gameInProgress {
                         Color.black
@@ -140,6 +137,28 @@ struct FightPage: View {
                 }
             }
     }
+    
+    func startGame() {
+           noEmpty = true
+           connectToGame()
+           disableText = false
+           gameInProgress = true
+           isTextFieldFocused = false
+   
+        user.restoreHealth() // Rimuove il focus dalle text field
+       }
+       
+       func resetGameState() {
+           sKey = ""
+           keyOpponent = ""
+           isEnabled = false
+           noEmpty = false
+           disableText = true
+           gameInProgress = false
+           accelerometerReaderIsRunning = false
+           updateIsKeyEntered()
+           isTextFieldFocused = true
+       }
     
     func generateUuid() -> String {
         numberKeyR = Int.random(in: 0...100000)

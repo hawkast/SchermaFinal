@@ -202,7 +202,9 @@ struct AccelerometerReader: View {
                        stopAccelerometerUpdates()
                        gameInProgress = false
             playSound(sound: "gameOver")
-            user.restoreHealth()
+           // keyOpponent = ""
+           // sKey = ""
+          //  user.restoreHealth()
                        
                    
                }
@@ -242,7 +244,9 @@ struct AccelerometerReader: View {
                endLife = true
                writeLifePoint()
                playSound(sound: "gameOver")
-               user.restoreHealth()
+              // keyOpponent = ""
+              // sKey = ""
+             //  user.restoreHealth()
              
            }
        }
